@@ -6,6 +6,12 @@ A minimal MacOS Pomodoro Timer that lives in the Menu Bar.
 ## Features
 - Custom Preset Timers
 - Detachable Timer Window
+- Launchable At Login
 
 ### Used Libraries
 [Launch At Login Moder](https://github.com/sindresorhus/LaunchAtLogin-Modern)
+
+### To-Do
+- Custom Alarm Sounds
+- Optional Custom Background Noise (Rain, White Noise, etc.)
+- Bug Fixes
