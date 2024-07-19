@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import AVFoundation
 
 class TimerViewModel: ObservableObject {
     @Published var remainingTime: Int
@@ -7,6 +8,7 @@ class TimerViewModel: ObservableObject {
     @Published var isRunning: Bool = false
     @Published var isPaused: Bool = false
     private var timer: Timer?
+    private var audioPlayer: AVAudioPlayer?
     
     init(duration: Double) {
         self.remainingTime = Int(duration * 60)
