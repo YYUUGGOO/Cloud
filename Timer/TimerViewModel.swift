@@ -1,16 +1,12 @@
 import Foundation
 import Combine
-import AVFoundation
 
 class TimerViewModel: ObservableObject {
     @Published var remainingTime: Int
     @Published var timerDuration: Double
     @Published var isRunning: Bool = false
-    @Published var isRainPlaying: Bool = false // New state for rain sound
     @Published var isPaused: Bool = false
     private var timer: Timer?
-    private var audioPlayer: AVAudioPlayer?
-    private var rainPlayer: AVAudioPlayer? // New audio player for rain sound
     
     init(duration: Double) {
         self.remainingTime = Int(duration * 60)
@@ -49,7 +45,6 @@ class TimerViewModel: ObservableObject {
     
     func startTimer() {
         timer?.invalidate()
-        //updateRemainingTime()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             if self.remainingTime > 0 {
                 self.remainingTime -= 1
@@ -98,5 +93,6 @@ class TimerViewModel: ObservableObject {
     func playAlarmSound() {
         audioPlayer?.play()
     }
+    
 
 }

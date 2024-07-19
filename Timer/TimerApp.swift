@@ -6,7 +6,7 @@ struct TimerApp: App {
 
     var body: some Scene {
         Settings {
-            EmptyView() // Your app does not need a main window, hence EmptyView
+            EmptyView() 
         }
     }
 }

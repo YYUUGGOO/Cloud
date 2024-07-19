@@ -16,7 +16,7 @@ struct ContentView: View {
             
             Slider(value: $viewModel.timerDuration, in: 1...60, step: 1)
                 .padding(.horizontal, 20)
-                .onChange(of: viewModel.timerDuration) {
+                .onReceive(viewModel.$timerDuration) { _ in
                     viewModel.updateRemainingTime()
                 }
             
@@ -35,7 +35,6 @@ struct ContentView: View {
             .padding(.leading, 20)
             
             HStack {
-                
                 Button(action: { viewModel.setPresetTimer(minutes: standardTimer) }) {
                     Text("\(self.standardTimer) Min")
                 }
@@ -50,13 +49,12 @@ struct ContentView: View {
                     Text("\(self.longBreak) Min")
                 }
                 .buttonStyle(PlainButtonStyle())
-
-
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             .padding(.trailing, 20)
             .padding(.vertical)
-            HStack{
+            
+            HStack {
                 Button(action: {
                     NSApplication.shared.terminate(nil)
                 }) {
@@ -64,14 +62,16 @@ struct ContentView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 .padding(.leading, 20)
+                
                 Spacer()
+                
                 Button("Detach Timer") {
                     openTimerWindow()
                 }
                 .buttonStyle(PlainButtonStyle())
-                Button("Settings"){
+                
+                Button("Settings") {
                     openSettings()
-                    
                 }
                 .buttonStyle(PlainButtonStyle())
             }
@@ -80,6 +80,7 @@ struct ContentView: View {
         }
         .frame(width: 300, height: 200)
     }
+
     func openTimerWindow() {
         let screen = NSScreen.main
         let screenRect = screen?.visibleFrame ?? NSRect(x: 0, y: 0, width: 800, height: 600)
@@ -101,29 +102,30 @@ struct ContentView: View {
         newWindow.contentView = NSHostingView(rootView: timerView(viewModel: viewModel))
         newWindow.makeKeyAndOrderFront(nil)
     }
-    func openSettings() {
-            let screen = NSScreen.main
-            let screenRect = screen?.visibleFrame ?? NSRect(x: 0, y: 0, width: 800, height: 600)
-            let windowWidth: CGFloat = 400
-            let windowHeight: CGFloat = 300
-            let windowX = screenRect.midX - (windowWidth / 2)
-            let windowY = screenRect.midY - (windowHeight / 2)
-            
-            let newWindow = NSWindow(
-                contentRect: NSRect(x: windowX, y: windowY, width: windowWidth, height: windowHeight),
-                styleMask: [.titled, .closable, .miniaturizable],
-                backing: .buffered, defer: false)
-            newWindow.center()
-            newWindow.setFrameAutosaveName("SettingsWindow")
-            newWindow.isReleasedWhenClosed = false
-            newWindow.level = .floating
-            newWindow.contentView = NSHostingView(rootView: settingsView(standardTimer: $standardTimer, shortBreak: $shortBreak, longBreak: $longBreak))
-            newWindow.makeKeyAndOrderFront(nil)
-        }
-    }
 
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView(viewModel: TimerViewModel(duration: 25))
-        }
+    func openSettings() {
+        let screen = NSScreen.main
+        let screenRect = screen?.visibleFrame ?? NSRect(x: 0, y: 0, width: 800, height: 600)
+        let windowWidth: CGFloat = 400
+        let windowHeight: CGFloat = 300
+        let windowX = screenRect.midX - (windowWidth / 2)
+        let windowY = screenRect.midY - (windowHeight / 2)
+        
+        let newWindow = NSWindow(
+            contentRect: NSRect(x: windowX, y: windowY, width: windowWidth, height: windowHeight),
+            styleMask: [.titled, .closable, .miniaturizable],
+            backing: .buffered, defer: false)
+        newWindow.center()
+        newWindow.setFrameAutosaveName("SettingsWindow")
+        newWindow.isReleasedWhenClosed = false
+        newWindow.level = .floating
+        newWindow.contentView = NSHostingView(rootView: settingsView(standardTimer: $standardTimer, shortBreak: $shortBreak, longBreak: $longBreak))
+        newWindow.makeKeyAndOrderFront(nil)
     }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(viewModel: TimerViewModel(duration: 25))
+    }
+}
