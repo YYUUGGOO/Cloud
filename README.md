@@ -5,10 +5,11 @@ A trully free minimal MacOS Pomodoro Timer that lives in the Menu Bar.
 
 ## Features
 - Custom Preset Timers
+- Completley free, no ads
 - Detachable Timer Window
 - Launchable At Login
 
-### Used Libraries
+### Used Packages
 [Launch At Login Moder](https://github.com/sindresorhus/LaunchAtLogin-Modern)
 
 ### To-Do
