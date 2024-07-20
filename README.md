@@ -5,7 +5,7 @@ A trully free minimal MacOS Pomodoro Timer that lives in the Menu Bar.
 
 ## Features
 - Custom Preset Timers
-- Completley free, no ads
+- Completley free, no ads, no data collecting
 - Detachable Timer Window
 - Launchable At Login
 
