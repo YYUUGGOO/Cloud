@@ -5,68 +5,66 @@ import AVFoundation
 class TimerViewModel: ObservableObject {
     @Published var remainingTime: Int
     @Published var timerDuration: Double
-    @Published var isRunning: Bool = false
-    @Published var isPaused: Bool = false
+    @Published var timerState: TimerState = .stopped
     private var timer: Timer?
     private var audioPlayer: AVAudioPlayer?
-    
+
     init(duration: Double) {
         self.remainingTime = Int(duration * 60)
         self.timerDuration = duration
         prepareAlarmSound()
     }
-    func toggleTimer(){
-        isRunning.toggle()
-        print(isRunning)
-        if isRunning == true {
-            startTimer()
-        } else {
+
+    func toggleTimer() {
+        switch timerState {
+        case .running:
             pauseTimer()
+        case .paused:
+            resumeTimer()
+        case .stopped:
+            startTimer()
         }
     }
-    
-    func pauseTimer(){
-        isPaused.toggle()
-        if isPaused {
-            timer?.invalidate()
-        } else {
-            // Directly restore the timer without adjusting `timerDuration`
-            timer?.invalidate()
-            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-                if self.remainingTime > 0 {
-                    self.remainingTime -= 1
-                } else {
-                    self.resetTimer()
-                    self.isRunning.toggle()
-                    self.timer?.invalidate()
-                    self.playAlarmSound()
-                }
-            }
-        }
-    }
-    
+
     func startTimer() {
         timer?.invalidate()
+        timerState = .running
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             if self.remainingTime > 0 {
                 self.remainingTime -= 1
             } else {
                 self.resetTimer()
-                self.isRunning.toggle()
-                self.timer?.invalidate()
+                self.playAlarmSound()
+            }
+        }
+    }
+
+    func pauseTimer() {
+        timer?.invalidate()
+        timerState = .paused
+    }
+
+    func resumeTimer() {
+        timerState = .running
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            if self.remainingTime > 0 {
+                self.remainingTime -= 1
+            } else {
+                self.resetTimer()
                 self.playAlarmSound()
             }
         }
     }
 
     func resetTimer() {
-        isRunning = false
+        timerState = .stopped
         timer?.invalidate()
         updateRemainingTime()
     }
 
     func setPresetTimer(minutes: Int) {
         timer?.invalidate()
+        timerState = .stopped
         timerDuration = Double(minutes)
         updateRemainingTime()
     }
@@ -95,6 +93,4 @@ class TimerViewModel: ObservableObject {
     func playAlarmSound() {
         audioPlayer?.play()
     }
-    
-
 }

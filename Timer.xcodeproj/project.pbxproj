@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		632108442C53E8B7002D790E /* TimerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632108432C53E8B7002D790E /* TimerState.swift */; };
 		63313B1C2C40276C0016C932 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63313B1B2C40276C0016C932 /* TimerViewModel.swift */; };
 		63313B1E2C40DCA20016C932 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 63313B1D2C40DCA20016C932 /* alarm.mp3 */; };
 		636EF0D92C4423BF004CEA6E /* timerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EF0D82C4423BF004CEA6E /* timerView.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		632108432C53E8B7002D790E /* TimerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerState.swift; sourceTree = "<group>"; };
 		63313B1B2C40276C0016C932 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		63313B1D2C40DCA20016C932 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 		636EF0D82C4423BF004CEA6E /* timerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timerView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				63313B1D2C40DCA20016C932 /* alarm.mp3 */,
 				637D39A62C3F9D810084ACA9 /* TimerApp.swift */,
 				63313B1B2C40276C0016C932 /* TimerViewModel.swift */,
+				632108432C53E8B7002D790E /* TimerState.swift */,
 				637D39D12C3FA3DC0084ACA9 /* AppDelegate.swift */,
 				637D39A82C3F9D810084ACA9 /* ContentView.swift */,
 				63A4CD292C44967A00A50D41 /* settingsView.swift */,
@@ -266,6 +269,7 @@
 				63A4CD2A2C44967A00A50D41 /* settingsView.swift in Sources */,
 				637D39D22C3FA3DC0084ACA9 /* AppDelegate.swift in Sources */,
 				637D39A92C3F9D810084ACA9 /* ContentView.swift in Sources */,
+				632108442C53E8B7002D790E /* TimerState.swift in Sources */,
 				637D39A72C3F9D810084ACA9 /* TimerApp.swift in Sources */,
 				639436FD2C41E70F00D69BF1 /* SwiftUIView.swift in Sources */,
 			);

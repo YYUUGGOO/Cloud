@@ -13,27 +13,27 @@ struct ContentView: View {
                 .font(.system(.largeTitle, design: .monospaced))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 20)
-            
+
             Slider(value: $viewModel.timerDuration, in: 1...60, step: 1)
                 .padding(.horizontal, 20)
                 .onReceive(viewModel.$timerDuration) { _ in
                     viewModel.updateRemainingTime()
                 }
-            
+
             HStack {
-                Button(action: viewModel.toggleTimer ) {
-                    Text(viewModel.isRunning ? "Pause" : "Start")
+                Button(action: viewModel.toggleTimer) {
+                    Text(buttonText(for: viewModel.timerState))
                 }
                 .buttonStyle(PlainButtonStyle())
-                
-                Button(action: viewModel.resetTimer ) {
+
+                Button(action: viewModel.resetTimer) {
                     Text("Reset")
                 }
                 .buttonStyle(PlainButtonStyle())
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 20)
-            
+
             HStack {
                 Button(action: { viewModel.setPresetTimer(minutes: standardTimer) }) {
                     Text("\(self.standardTimer) Min")
@@ -44,7 +44,7 @@ struct ContentView: View {
                     Text("\(self.shortBreak) Min")
                 }
                 .buttonStyle(PlainButtonStyle())
-                
+
                 Button(action: { viewModel.setPresetTimer(minutes: longBreak) }) {
                     Text("\(self.longBreak) Min")
                 }
@@ -53,7 +53,7 @@ struct ContentView: View {
             .frame(maxWidth: .infinity, alignment: .trailing)
             .padding(.trailing, 20)
             .padding(.vertical)
-            
+
             HStack {
                 Button(action: {
                     NSApplication.shared.terminate(nil)
@@ -62,14 +62,14 @@ struct ContentView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 .padding(.leading, 20)
-                
+
                 Spacer()
-                
+
                 Button("Detach Timer") {
                     openTimerWindow()
                 }
                 .buttonStyle(PlainButtonStyle())
-                
+
                 Button("Settings") {
                     openSettings()
                 }
@@ -81,16 +81,27 @@ struct ContentView: View {
         .frame(width: 300, height: 200)
     }
 
+    private func buttonText(for state: TimerState) -> String {
+        switch state {
+        case .running:
+            return "Pause"
+        case .paused:
+            return "Resume"
+        case .stopped:
+            return "Start"
+        }
+    }
+
     func openTimerWindow() {
         let screen = NSScreen.main
         let screenRect = screen?.visibleFrame ?? NSRect(x: 0, y: 0, width: 800, height: 600)
-        
+
         let windowWidth: CGFloat = 200
         let windowHeight: CGFloat = 200
-        
+
         let windowX = screenRect.midX - (windowWidth / 2)
         let windowY = screenRect.midY - (windowHeight / 2)
-        
+
         let newWindow = NSWindow(
             contentRect: NSRect(x: windowX, y: windowY, width: windowWidth, height: windowHeight),
             styleMask: [.titled, .closable, .miniaturizable],
@@ -110,7 +121,7 @@ struct ContentView: View {
         let windowHeight: CGFloat = 300
         let windowX = screenRect.midX - (windowWidth / 2)
         let windowY = screenRect.midY - (windowHeight / 2)
-        
+
         let newWindow = NSWindow(
             contentRect: NSRect(x: windowX, y: windowY, width: windowWidth, height: windowHeight),
             styleMask: [.titled, .closable, .miniaturizable],
