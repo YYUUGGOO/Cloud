@@ -16,3 +16,6 @@ A trully free minimal MacOS Pomodoro Timer that lives in the Menu Bar.
 - Custom Alarm Sounds
 - Optional Custom Background Noise (Rain, White Noise, etc.)
 - Bug Fixes
+
+### License
+GNU GPLv3
