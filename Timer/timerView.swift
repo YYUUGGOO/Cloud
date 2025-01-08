@@ -2,7 +2,6 @@
 //  timerView.swift
 //  Timer
 //
-//  Created by David Miladinović on 14.07.24.
 //
 
 import SwiftUI
