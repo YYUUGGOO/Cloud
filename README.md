@@ -10,7 +10,7 @@ A trully free minimal MacOS Pomodoro Timer that lives in the Menu Bar.
 - Launchable At Login
 
 ### Used Packages
-[Launch At Login Moder](https://github.com/sindresorhus/LaunchAtLogin-Modern)
+[Launch At Login](https://github.com/sindresorhus/LaunchAtLogin-Modern)
 
 ### To-Do
 - Custom Alarm Sounds
