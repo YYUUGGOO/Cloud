@@ -19,3 +19,8 @@ A trully free minimal MacOS Pomodoro Timer that lives in the Menu Bar.
 
 ### License
 GNU GPLv3
+
+### Donation
+If you feel inclined to support the work I do, you can do so using ko-fi.
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q31Q4X0W)
