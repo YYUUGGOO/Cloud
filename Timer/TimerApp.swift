@@ -6,7 +6,7 @@ struct TimerApp: App {
 
     var body: some Scene {
         Settings {
-            EmptyView() 
+            TimerSettingsView()
         }
     }
 }

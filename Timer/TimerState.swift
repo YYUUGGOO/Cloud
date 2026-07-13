@@ -2,7 +2,7 @@
 //  TimerState.swift
 //  Timer
 //
-//  Created by David Miladinović on 26.07.24.
+//  Created by David on 26.07.24.
 //
 
 import Foundation
