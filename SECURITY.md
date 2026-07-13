@@ -11,7 +11,7 @@ The latest major release of Cloud is supported with security updates.
 
 ## Reporting a Vulnerability
 
-If you believe you have discovered a security vulnerability in Cloud, please open a **private security advisory** on GitHub or contact the maintainer directly.
+If you believe you have discovered a security vulnerability in Cloud, please open a **private security advisory** on GitHub or contact me directly.
 
 Please include:
 - A description of the issue
