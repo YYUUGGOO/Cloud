@@ -49,10 +49,6 @@ Zen Mode is disabled by default. When enabled, duration and preset controls are 
 - [LaunchAtLogin-Modern](https://github.com/sindresorhus/LaunchAtLogin-Modern)
 
 
-## Open source
-
-Cloud is open-source software. Source code, issues, and releases are available at [YYUUGGOO/Cloud](https://github.com/YYUUGGOO/Cloud).
-
 ## License
 
 Cloud is licensed under the GNU General Public License v3.0.
